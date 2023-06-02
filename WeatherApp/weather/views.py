@@ -1,10 +1,12 @@
+import os
+
 import requests
 from django.shortcuts import render
 from .models import City
 from .forms import CityForm
 
 def index(request):
-    appid = '5d051d14d423e8fab3add8a068050a25'
+    appid = os.environ.get('appid')
     url = 'https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=' + appid
 
     if request.method == 'POST':
